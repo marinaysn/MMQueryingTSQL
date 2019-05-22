@@ -5,7 +5,7 @@
 -- colored products, and you further wish to force the color red to sort first.
 -- red should be before all other colors, even if it is black or grey or silver
 -- this happens because SQL Server sorts nulls first. The CASE expression returns NULL
-for red-colored items, thus forcing those first
+-- for red-colored items, thus forcing those first
 --ex:
 
 SELECT p.ProductID, p.Name, p.Color

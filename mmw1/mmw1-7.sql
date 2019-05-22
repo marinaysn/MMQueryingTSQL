@@ -16,4 +16,5 @@ FROM information_schema.tables
 WHERE table_name like 'Inventory%'
 AND table_type = 'BASE TABLE'
 
+--can work with any other command. Be careful with Drop etc
 ---------------

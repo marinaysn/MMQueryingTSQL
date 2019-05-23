@@ -1,3 +1,6 @@
+USE [AdventureWorks2017]
+GO
+
 CREATE TABLE [dbo].[CreditCards](
 	[CreditCardType] [nvarchar](25) NULL,
 	[AutoID] [int] IDENTITY(1,1) NOT NULL,

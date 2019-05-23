@@ -1,3 +1,6 @@
+USE [AdventureWorks2017]
+GO
+
 /* Drop constraint and table to allow for the script to be rerun at will. */
 ALTER TABLE Production.Product
 DROP CONSTRAINT FK_Product_Color;

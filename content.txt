@@ -1,0 +1,15 @@
+-- db AdventureWorks2017
+
+mmw1
+1-7. Listing the Available Tables
+1-13. Testing for Existence
+1-16. Writing an IN-List
+1-17. Performing Wildcard Searches
+1-19. Specifying the Case-Sensitivity of a Sort
+1-20. Sorting Nulls High or Low and sorting with non existing value
+1-21. Forcing Unusual Sort Orders
+1-22. Paging Through a Result Set
+
+mmw2
+2-1. Executing T-SQL from a File
+

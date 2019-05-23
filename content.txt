@@ -13,6 +13,9 @@ mmw1
 mmw2
 2-1. Executing T-SQL from a File
 2-2. Retrieving Values into Variables
+2-3. Writing Expressions
+
+
 
 
 

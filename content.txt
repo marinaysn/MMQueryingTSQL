@@ -1,5 +1,4 @@
 -- db AdventureWorks2017
-
 mmw1
 1-7. Listing the Available Tables
 1-13. Testing for Existence
@@ -14,6 +13,13 @@ mmw2
 2-1. Executing T-SQL from a File
 2-2. Retrieving Values into Variables
 2-3. Writing Expressions
+2-4. Deciding Between Two Execution Paths
+2-5. Detecting Whether Rows Exist - IF...THEN...ELSE statement
+
+
+
+
+
 
 
 

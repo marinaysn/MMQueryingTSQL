@@ -15,7 +15,8 @@ mmw2
 2-3. Writing Expressions
 2-4. Deciding Between Two Execution Paths
 2-5. Detecting Whether Rows Exist - IF...THEN...ELSE statement
-
+2-6. Going to a Label in a Transact-SQL Batch
+2-7. Trapping and Throwing Errors
 
 
 

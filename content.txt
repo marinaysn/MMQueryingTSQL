@@ -18,8 +18,7 @@ mmw2
 2-6. Going to a Label in a Transact-SQL Batch
 2-7. Returning from the Current Execution Scope
 2-9. Writing a Simple CASE Expression
-
-
+2-10. Writing a Searched CASE Expression
 
 
 

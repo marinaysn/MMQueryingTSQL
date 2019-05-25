@@ -27,17 +27,6 @@ SELECT DepartmentID AS DeptID, [Name], GroupName,
 FROM HumanResources.Department;
 
 -----------------------------
---ex:
-(CASE
-    WHEN [Tons] = 0 THEN CONVERT( NUMERIC (18, 2), total * (1 - Discount))
-    ELSE CONVERT( NUMERIC (18, 2) , total + RestockingFee) 
-    END) AS TotalAmountAfterOrderLevelDiscount,
-(CASE
-    WHEN [Tons] = 0  THEN CONVERT (NUMERIC (18, 2), (total * ExchangeRate) * (1 - Discount))
-    ELSE CONVERT (NUMERIC(18, 2), ((total + Restocking) * ExchangeRate))
-    END) AS CurrExtendedAmountAfterOrderLevelDiscount
-
------------------------------
 
 --general format of the CASE expression in the example is as follows:
 CASE ColumnName

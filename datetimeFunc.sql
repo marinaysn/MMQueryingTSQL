@@ -28,5 +28,11 @@ SELECT DATEADD(yy,-1,DATEADD(yy,DATEDIFF(yy,0,GETDATE()),0)) 'First Day of Last 
 SELECT DATEADD(ms,-3,DATEADD(yy,0,DATEADD(yy,DATEDIFF(yy,0,GETDATE()),0))) 'Last Day of Last Year'
 ----Next Year
 SELECT YEAR(GETDATE()) + 1 as 'Next Year', MONTH(GETDATE()) 'Month', DAY(GETDATE()) 'Day';
+SELECT YEAR(DATEADD(YEAR,1, getDate()));
 ----Next Year April 30
 SELECT convert(CHAR(4), year(sysdatetime()) + 1) + '0430' as 'NextYearApril30';
+----Adding / Subtracting Dates
+SELECT DATEADD(DAY,10, getDate()) 'Next 10 days';
+SELECT DATEADD(MONTH, -10, getDate()) 'Ten month Ago';
+SELECT DATEADD(YEAR, -10, getDate()) 'Ten years Ago';
+----

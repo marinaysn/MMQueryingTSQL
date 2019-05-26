@@ -35,4 +35,57 @@ SELECT convert(CHAR(4), year(sysdatetime()) + 1) + '0430' as 'NextYearApril30';
 SELECT DATEADD(DAY,10, getDate()) 'Next 10 days';
 SELECT DATEADD(MONTH, -10, getDate()) 'Ten month Ago';
 SELECT DATEADD(YEAR, -10, getDate()) 'Ten years Ago';
+----Add And Subtract Years from DateTime in SQL Server
+SELECT GETDATE() 'Current_Date', 
+           DATEADD(YEAR,5,GETDATE()) 'Current_Date + 1 YEAR'
+SELECT GETDATE() 'Current_Date', 
+           DATEADD(YY,-13,GETDATE()) 'Current_Date - 3 YEAR'
+SELECT GETDATE() 'Current_Date', 
+           DATEADD(YYYY,-40,GETDATE()) 'Current_Date - 4 YEAR'
+----Add And Subtract Quarters from DateTime in SQL Server
+SELECT GETDATE() 'Current_Date',
+            DATEADD(QUARTER,1,GETDATE()) 'Current_Date + 1 QUARTER'
+SELECT GETDATE() 'Current_Date', 
+            DATEADD(QQ,-3,GETDATE()) 'Current_Date - 3 QUARTER'
+SELECT GETDATE() 'Current_Date',
+            DATEADD(Q,-4,GETDATE()) 'Current_Date - 4 QUARTER'
+----Add And Subtract Months from DateTime in Sql Server
+SELECT GETDATE() 'Current_Date', 
+           DATEADD(month,4,GETDATE()) 'Current_Date + 4 Month'
+SELECT GETDATE() 'Current_Date', 
+           DATEADD(MM,-10,GETDATE()) 'Current_Date - 10 Month'
+SELECT GETDATE() 'Current_Date', 
+           DATEADD(M,-20,GETDATE()) 'Current_Date - 20 Month'
+----Add And Subtract Weeks from DateTime in SQL Server
+SELECT GETDATE() 'Current_Date',
+ 
+           DATEADD(week,-4,GETDATE()) 'Current_Date - 4 week'
+SELECT GETDATE() 'Current_Date', 
+           DATEADD(wk,10,GETDATE()) 'Current_Date + 10 week'
+           
+           
+SELECT GETDATE() 'Current_Date',
+ 
+           DATEADD(ww,-20,GETDATE()) 'Current_Date - 20 week'
+----Subtract Days from DateTime in SQL Server
+SELECT GETDATE() 'Current_Date', 
+           DATEADD(day,-4,GETDATE()) 'Current_Date - 4 Days'
+SELECT GETDATE() 'Current_Date', 
+           DATEADD(dd,-10,GETDATE()) 'Current_Date - 10 Days'
+SELECT GETDATE() 'Current_Date', 
+           DATEADD(d,-20,GETDATE()) 'Current_Date - 20 Days'
+----ADD Days from DateTime in SQL Server
+SELECT GETDATE() 'Current_Date', 
+           DATEADD(day,4,GETDATE()) 'Current_Date + 4 Days'
+SELECT GETDATE() 'Current_Date', 
+           DATEADD(dd,10,GETDATE()) 'Current_Date + 10 Days'
+SELECT GETDATE() 'Current_Date', 
+           DATEADD(d,20,GETDATE()) 'Current_Date + 20 Days'
 ----
+
+
+----
+
+----
+
+

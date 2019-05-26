@@ -28,5 +28,7 @@ mmw3 - Working with NULLS
 3-1. Replacing NULL with an Alternate Value
 3-2. Returning the First Non-NULL Value from a List
 3-3. Choosing Between ISNULL and COALESCE in a SELECT Statement
+3-4. Looking for NULLs in a Table
+
 
 

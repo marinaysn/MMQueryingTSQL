@@ -30,5 +30,5 @@ mmw3 - Working with NULLS
 3-3. Choosing Between ISNULL and COALESCE in a SELECT Statement
 3-4. Looking for NULLs in a Table
 3-5. Removing Values from an Aggregate
-
+3-6. Enforcing Uniqueness with NULL Values
 

@@ -32,3 +32,6 @@ mmw3 - Working with NULLS
 3-5. Removing Values from an Aggregate
 3-6. Enforcing Uniqueness with NULL Values
 
+mmw4 - Querying from Multiple Tables
+4-1. Correlating Parent and Child Rows
+

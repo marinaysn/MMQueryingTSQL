@@ -33,5 +33,5 @@ mmw3 - Working with NULLS
 3-6. Enforcing Uniqueness with NULL Values
 
 mmw4 - Querying from Multiple Tables
-4-1. Correlating Parent and Child Rows
+4-2. Querying Many-to-Many Relationships
 

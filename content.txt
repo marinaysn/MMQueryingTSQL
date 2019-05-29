@@ -34,4 +34,5 @@ mmw3 - Working with NULLS
 
 mmw4 - Querying from Multiple Tables
 4-2. Querying Many-to-Many Relationships
+4-3. Making One Side of a Join Optional
 

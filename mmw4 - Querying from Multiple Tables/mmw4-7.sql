@@ -4,7 +4,7 @@
 --https://explainextended.com/2009/07/16/inner-join-vs-cross-apply/
 --https://sqlhints.com/tag/examples-of-cross-apply/
 --https://www.mssqltips.com/sqlservertip/1958/sql-server-cross-apply-and-outer-apply/
---
+--https://visweshkk.blogspot.com/2014/06/using-cross-apply-to-optimize-joins-on.html
 
 -- SQL Server APPLY operator has two variants; CROSS APPLY and OUTER APPLY
 --
@@ -50,22 +50,7 @@ ORDER BY  FirstDayOfMth
 
 
 -----------------------------
---using Northwind
 
-SELECT * FROM Department_CA D 
-CROSS APPLY 
-   ( 
-   SELECT * FROM Employee_CA E 
-   WHERE E.DepartmentID = D.DepartmentID 
-   ) A 
-GO
- 
-SELECT * FROM Department_CA D 
-INNER JOIN Employee_CA E ON D.DepartmentID = E.DepartmentID 
-GO 
-
-SELECT * FROM Department_CA
- SELECT * FROM Employee_CA
 
 -----------------------------
 
@@ -138,4 +123,81 @@ cross apply (
 select *
 from Person_CA  p
     inner join Company_CA  c on p.companyid = c.companyId
+
+---------------------
+----SQL Sever OUTER APPLY vs LEFT OUTER JOIN
+
+--using Northwind
+
+SELECT * FROM Department_CA
+ SELECT * FROM Employee_CA
+
+--Script #2 - CROSS APPLY and INNER JOIN
+
+SELECT * FROM Department D 
+CROSS APPLY 
+   ( 
+   SELECT * FROM Employee E 
+   WHERE E.DepartmentID = D.DepartmentID 
+   ) A 
+GO
+ 
+SELECT * FROM Department D 
+INNER JOIN Employee E ON D.DepartmentID = E.DepartmentID 
+GO 
+---------------------
+--Script #3 - OUTER APPLY and LEFT OUTER JOIN
+
+SELECT * FROM Department D 
+OUTER APPLY 
+   ( 
+   SELECT * FROM Employee E 
+   WHERE E.DepartmentID = D.DepartmentID 
+   ) A 
+GO
+ 
+SELECT * FROM Department D 
+LEFT OUTER JOIN Employee E ON D.DepartmentID = E.DepartmentID 
+GO 
+
+
+---------------------
+
+--Script #4 - APPLY with table-valued function
+
+IF EXISTS (SELECT * FROM sys.objects WHERE OBJECT_ID = OBJECT_ID(N'[fn_GetAllEmployeeOfADepartment]') AND type IN (N'IF')) 
+BEGIN 
+   DROP FUNCTION dbo.fn_GetAllEmployeeOfADepartment 
+END 
+GO
+ 
+CREATE FUNCTION dbo.fn_GetAllEmployeeOfADepartment(@DeptID AS INT)  
+RETURNS TABLE 
+AS 
+RETURN 
+   ( 
+   SELECT * FROM Employee_CA E 
+   WHERE E.DepartmentID = @DeptID 
+   ) 
+GO
+ 
+SELECT * FROM Department_CA D 
+CROSS APPLY dbo.fn_GetAllEmployeeOfADepartment(D.DepartmentID) 
+GO
+ 
+SELECT * FROM Department_CA D 
+OUTER APPLY dbo.fn_GetAllEmployeeOfADepartment(D.DepartmentID) 
+GO 
+
+---------------------
+--Script #5 - APPLY with Dynamic Management Function (DMF)
+--Northwind
+USE master 
+GO
+ 
+SELECT DB_NAME(r.database_id) AS [Database], st.[text] AS [Query]  
+FROM sys.dm_exec_requests r 
+CROSS APPLY sys.dm_exec_sql_text(r.plan_handle) st 
+WHERE r.session_Id > 50           -- Consider spids for users only, no system spids. 
+AND r.session_Id NOT IN (@@SPID)  -- Don't include request from current spid. 
 

@@ -36,3 +36,4 @@ mmw4 - Querying from Multiple Tables
 4-2. Querying Many-to-Many Relationships
 4-3. Making One Side of a Join Optional
 4-4. Making Both Sides of a Join Optional
+4-6. Selecting from a Result Set

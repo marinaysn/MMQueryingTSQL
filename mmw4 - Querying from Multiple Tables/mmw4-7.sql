@@ -3,6 +3,7 @@
 --other sources: 
 --https://explainextended.com/2009/07/16/inner-join-vs-cross-apply/
 --https://sqlhints.com/tag/examples-of-cross-apply/
+--https://www.mssqltips.com/sqlservertip/1958/sql-server-cross-apply-and-outer-apply/
 --
 
 -- SQL Server APPLY operator has two variants; CROSS APPLY and OUTER APPLY
@@ -16,13 +17,14 @@
 -- irrespective of its match with the right table expression. For those rows 
 -- for which there are no corresponding matches in the right table expression, 
 -- it contains NULL values in columns of the right table expression.
+--
 -- So you might conclude, the CROSS APPLY is equivalent to an INNER JOIN 
 -- (or to be more precise its like a CROSS JOIN with a correlated sub-query) 
 -- with an implicit join condition of 1=1 whereas the OUTER APPLY is equivalent 
 -- to a LEFT OUTER JOIN.
 
 
------------------------------
+----------------------------- 
 SELECT
     DATENAME(MONTH, DATEADD(MONTH, DATEDIFF(MONTH,'19000101',OrderDate), '19000101') ) AS [Month],
     SUM(TotalDue) AS Total
@@ -32,52 +34,95 @@ WHERE OrderDate>='20120101'
 GROUP BY            DATEADD(MONTH, DATEDIFF(MONTH,'19000101',OrderDate), '19000101')
 ORDER BY            DATEADD(MONTH, DATEDIFF(MONTH,'19000101',OrderDate), '19000101');
 
+-- to eliminate redundancy
 
-
+SELECT DATENAME(MONTH,FirstDayOfMth) AS Month, SUM(TotalDue) AS Total
+FROM Sales.SalesOrderHeader
+	CROSS APPLY (
+			SELECT DATEADD(MONTH, DATEDIFF(MONTH,'19000101',OrderDate), '19000101') AS FirstDayOfMth
+	) F_Mth
+WHERE OrderDate>='20120101' 
+    AND OrderDate < '20140101'
+GROUP BY FirstDayOfMth
+ORDER BY  FirstDayOfMth
 ----------------------------------------- Present the data
 
 
 
 -----------------------------
+--using Northwind
 
-    
+SELECT * FROM Department_CA D 
+CROSS APPLY 
+   ( 
+   SELECT * FROM Employee_CA E 
+   WHERE E.DepartmentID = D.DepartmentID 
+   ) A 
+GO
+ 
+SELECT * FROM Department_CA D 
+INNER JOIN Employee_CA E ON D.DepartmentID = E.DepartmentID 
+GO 
+
+SELECT * FROM Department_CA
+ SELECT * FROM Employee_CA
+
 -----------------------------
 
 --example with cross apply and inner join
 
-create table Company_CA (
+create table Company_CA
+(
     companyId int identity(1,1)
-,   companyName varchar(100)
-,   zipcode varchar(10) 
-,   constraint PK_Company_CA  primary key (companyId)
+,
+    companyName varchar(100)
+,
+    zipcode varchar(10) 
+,
+    constraint PK_Company_CA  primary key (companyId)
 )
 GO
 
-create table Person_CA  (
+create table Person_CA
+(
     personId int identity(1,1)
-,   personName varchar(100)
-,   companyId int
-,   constraint FK_Person_CA_CompanyId foreign key (companyId) references dbo.Company_CA (companyId)
-,   constraint PK_Person_CA  primary key (personId)
+,
+    personName varchar(100)
+,
+    companyId int
+,
+    constraint FK_Person_CA_CompanyId foreign key (companyId) references dbo.Company_CA (companyId)
+,
+    constraint PK_Person_CA  primary key (personId)
 )
 GO
 
-insert Company_CA 
-select 'ABC Company', '19808' union
-select 'XYZ Company', '08534' union
-select '123 Company', '10016'
+insert Company_CA
+    select 'ABC Company', '19808'
+union
+    select 'XYZ Company', '08534'
+union
+    select '123 Company', '10016'
 
 
-insert Person_CA 
-select 'Alan', 1 union
-select 'Bobby', 1 union
-select 'Chris', 1 union
-select 'Xavier', 2 union
-select 'Yoshi', 2 union
-select 'Zambrano', 2 union
-select 'Player 1', 3 union
-select 'Player 2', 3 union
-select 'Player 3', 3 
+insert Person_CA
+    select 'Alan', 1
+union
+    select 'Bobby', 1
+union
+    select 'Chris', 1
+union
+    select 'Xavier', 2
+union
+    select 'Yoshi', 2
+union
+    select 'Zambrano', 2
+union
+    select 'Player 1', 3
+union
+    select 'Player 2', 3
+union
+    select 'Player 3', 3
 
 
 /* using CROSS APPLY */
@@ -92,5 +137,5 @@ cross apply (
 /* the equivalent query using INNER JOIN */
 select *
 from Person_CA  p
-inner join Company_CA  c on p.companyid = c.companyId
+    inner join Company_CA  c on p.companyid = c.companyId
 

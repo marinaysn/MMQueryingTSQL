@@ -38,3 +38,4 @@ mmw4 - Querying from Multiple Tables
 4-4. Making Both Sides of a Join Optional
 4-6. Selecting from a Result Set
 4-7. Introducing New Columns
+4-8. Testing for the Existence of a Row

@@ -39,3 +39,4 @@ mmw4 - Querying from Multiple Tables
 4-6. Selecting from a Result Set
 4-7. Introducing New Columns
 4-8. Testing for the Existence of a Row
+4-9. Testing Against the Result from a Query

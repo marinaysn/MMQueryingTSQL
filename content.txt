@@ -42,4 +42,5 @@ mmw4 - Querying from Multiple Tables
 4-9. Testing Against the Result from a Query
 4-10. Stacking Two Row Sets Vertically
 4-11. Eliminating Duplicate Values from a Union
+4-12. Subtracting One Row Set from Another
 

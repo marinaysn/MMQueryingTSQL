@@ -40,3 +40,6 @@ mmw4 - Querying from Multiple Tables
 4-7. Introducing New Columns
 4-8. Testing for the Existence of a Row
 4-9. Testing Against the Result from a Query
+4-10. Stacking Two Row Sets Vertically
+4-11. Eliminating Duplicate Values from a Union
+

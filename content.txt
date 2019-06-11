@@ -50,7 +50,7 @@ mmw4 - Querying from Multiple Tables
 
 mmw5 - Aggregations and Grouping
 5-1. Computing an Aggregation
-
+5-2. Creating Aggregations Based upon the Values of the Data
 
 
 

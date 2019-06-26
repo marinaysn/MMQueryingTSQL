@@ -52,7 +52,7 @@ mmw5 - Aggregations and Grouping
 5-1. Computing an Aggregation
 5-2. Creating Aggregations Based upon the Values of the Data
 5-3. Counting the Rows in a Group
-5-4. Detecting Changes in a Table
+5-4. Restricting a Result Set to Groups of Interest
 
 
 

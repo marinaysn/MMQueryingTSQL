@@ -1,24 +1,25 @@
-----5-4. Detecting Changes in a Table
+----5-4. Restricting a Result Set to Groups of Interest
 --
-------
+----------------------------------------- syntax
+
+SELECT select_list
+FROM table_list
+[ WHERE search_conditions ]
+[ GROUP BY group_by_list ]
+[ HAVING search_conditions ]
 
 -----------------------------
-
+SELECT s.Name,
+    COUNT(w.WorkOrderID) AS Cnt
+FROM Production.ScrapReason s
+    INNER JOIN Production.WorkOrder w
+    ON s.ScrapReasonID = w.ScrapReasonID
+GROUP BY s.Name
+HAVING COUNT(*) > 50;
 
 
 ----------------------------------------- Present the data
-IF OBJECT_ID('tempdb.dbo.[#Recipe5.4]') IS NOT NULL DROP TABLE [#Recipe5.4];
-CREATE TABLE [#Recipe5.4]
-(
-    StudentID INTEGER,
-    Grade INTEGER
-);
 
-INSERT INTO [#Recipe5.4]
-    (StudentID, Grade)
-VALUES
-    (1, 100),
-    (1, 95)
 
 -----------------------------
 
